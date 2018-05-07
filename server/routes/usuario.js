@@ -2,9 +2,19 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const _ = require('underscore')
 const app = express()
-const Usuario = require('../models/usuario.js')
+const Usuario = require
+('../models/usuario.js')
+const {verficaToken,verificaAdmin_Role} = require('../middlewares/autenticacion.js')
 
-app.get('/usuario', function (req, res) {
+
+app.get('/usuario',verficaToken, (req, res)=> {
+
+    return res.json({
+        usuario:req.usuario,
+        nombre:req.usuario.nombre,
+        email:req.usuario.email
+    })
+
     let desde = req.query.desde || 0
     desde = Number(desde)
 
@@ -31,7 +41,7 @@ app.get('/usuario', function (req, res) {
     })
 });
 
-app.post('/usuario', function (req, res) {
+app.post('/usuario',[verficaToken,verificaAdmin_Role], function (req, res) {
 
     let body = req.body;
     let usuario = new Usuario({
@@ -58,7 +68,7 @@ app.post('/usuario', function (req, res) {
 
 });
 
-app.put('/usuario/:id', function (req, res) {
+app.put('/usuario/:id',[verficaToken,verificaAdmin_Role], function (req, res) {
 
     let id = req.params.id
     let body = _.pick(req.body, [
@@ -88,7 +98,7 @@ app.put('/usuario/:id', function (req, res) {
 
 });
 
-app.delete('/usuario/:id', function (req, res) {
+app.delete('/usuario/:id',[verficaToken,verificaAdmin_Role], function (req, res) {
     let id = req.params.id
     let cambiaEstado = {
         estado:'false'

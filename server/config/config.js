@@ -17,7 +17,12 @@ if(process.env.NODE_ENV ==='dev'){
     urlDB=process.env.MONGO_URI
 }
 process.env.URLDB=urlDB
+//============================
+// vencimiento del toke
+//============================
+process.env.CADUCIDAD_TOKE=60*60*24*30
 
+process.env.SEED=process.env.SEED||'este-es-el-sedd-desarrollo'
 
 
 
