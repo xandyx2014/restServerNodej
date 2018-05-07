@@ -24,5 +24,8 @@ process.env.CADUCIDAD_TOKE=60*60*24*30
 
 process.env.SEED=process.env.SEED||'este-es-el-sedd-desarrollo'
 
-
+//====================================
+//Google client Id
+//====================================
+process.env.CLIENT_ID= process.env.CLIENT_ID || '304701983201-4ph32oetmq8qg2hp2dplghiku1p29jpa.apps.googleusercontent.com'
 
