@@ -20,7 +20,7 @@ process.env.URLDB=urlDB
 //============================
 // vencimiento del toke
 //============================
-process.env.CADUCIDAD_TOKE=60*60*24*30
+process.env.CADUCIDAD_TOKE='48h'
 
 process.env.SEED=process.env.SEED||'este-es-el-sedd-desarrollo'
 
